@@ -8,6 +8,9 @@
 
 #include "main.h"
 
+#include <iostream>
+using namespace std;
+
 int main(int argc, char const *argv[])
 {
 	glutInit(&argc, (char **)argv);
@@ -15,6 +18,7 @@ int main(int argc, char const *argv[])
 	glutInitWindowSize(800, 600);
 	glutCreateWindow("Practica IDI 2012/2013");
 	glutDisplayFunc(refresh);
+	glutReshapeFunc(reshape);
 	glutMainLoop();
 	return 0;
 }

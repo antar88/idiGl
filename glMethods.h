@@ -8,9 +8,9 @@
 
 #ifndef ____glMethods__
 #define ____glMethods__
-
-#include <iostream>
-
 #endif /* defined(____glMethods__) */
 
-void refresh();
+#include "includes.h"
+
+void refresh(void);
+void reshape(int x, int y);
