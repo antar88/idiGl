@@ -14,7 +14,7 @@ using namespace std;
 
 //triangle
 static triangleColor tc = {1.0,0.0,0.0};
-static trianlePos tp = {-0.5f,-1.0f/3.0f,0.0f,0.5f,-1.0f/3.0f,0.0f,0.0f,2.0f/3.0f,0.0f};
+static trianlePos tp = { Point(-0.5f,-1.0f/3.0f,0.0f) , Point(0.5f,-1.0f/3.0f,0.0f), Point(0.0f,2.0f/3.0f,0.0f)};
 
 //globals
 static int mode = NORMAL_MODE;
@@ -34,9 +34,9 @@ void refresh(void)
     
   
     glColor3f(tc.r,tc.g,tc.b);
-    glVertex3f(tp.x0,tp.y0,tp.z0);
-    glVertex3f(tp.x1,tp.y1,tp.z1);
-    glVertex3f(tp.x2,tp.y2,tp.z2);
+    glVertex3f(tp.p1.x,tp.p1.y,tp.p1.z);
+    glVertex3f(tp.p2.x,tp.p2.y,tp.p2.z);
+    glVertex3f(tp.p3.x,tp.p3.y,tp.p3.z);
     glEnd();
     
     
@@ -86,24 +86,10 @@ void mouseInteraction(int mouseButton, int type, int xClic, int yClic) {
     else {
         if(mode == DRAWING_MODE) {
             Point mousePoint = Point(xClic, yClic);
-            if(numClic == 0) {
-                
-                Point appPoint = viewPointToAppPoint(mousePoint);
-                tp.x0 = appPoint.x;
-                tp.y0 = appPoint.y;
-                tp.z0 = appPoint.z;           
-            }
-            else if (numClic == 1) {
-                Point appPoint = viewPointToAppPoint(mousePoint);
-                tp.x1 = appPoint.x;
-                tp.y1 = appPoint.y;
-                tp.z1 = appPoint.z;
-            }
+            if(numClic == 0) tp.p1 = viewPointToAppPoint(mousePoint);
+            else if (numClic == 1) tp.p2 = viewPointToAppPoint(mousePoint);
             else if (numClic == 2) {
-                Point appPoint = viewPointToAppPoint(mousePoint);
-                tp.x2 = appPoint.x;
-                tp.y2 = appPoint.y;
-                tp.z2 = appPoint.z;
+                tp.p3 = viewPointToAppPoint(mousePoint);
                 numClic = 0;
                 mode = NORMAL_MODE;
                 glutPostRedisplay();

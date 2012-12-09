@@ -17,7 +17,7 @@ void refresh(void)
 {
 	glClearColor(1,1,1,0);
 	glClear(GL_COLOR_BUFFER_BIT);
-	
+	/*
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	float raw = width / height;
@@ -26,7 +26,7 @@ void refresh(void)
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 	gluLookAt(0.,0.,1.0,0.,0.,0.,0.,1.,0.);
-	
+	*/
 
 	
 	glBegin(GL_TRIANGLES);
@@ -46,7 +46,7 @@ void refresh(void)
 void reshape(int x, int y) {
 	width = (float) x;
 	height = (float) y;
-	glViewport(0,0,min,min);
+	glViewport(0,0,x,y);
 }
 
 
