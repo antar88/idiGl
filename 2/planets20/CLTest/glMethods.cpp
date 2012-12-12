@@ -71,7 +71,6 @@ void updateCamera(float x, float y) {
     
     GLdouble m[16];
     glGetDoublev(GL_MODELVIEW_MATRIX, m);
-    glLoadIdentity();
     glRotated(rotateVector.y, 0, 1, 0);
     glRotated(rotateVector.x, 1, 0, 0);
     glMultMatrixd(m);
@@ -182,7 +181,7 @@ void keyboardSpecialKeysInteraction(int key, int xMouse, int yMouse) {
     }
     if(updateCam) updateCamera(SCREEN_W, SCREEN_H);
     if(refresh) glutPostRedisplay();
-}
+} 
 
 void keyboardInteraction(unsigned char key, int xMouse, int yMouse) {
     bool refresh = true;
